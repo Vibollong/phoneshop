@@ -1,7 +1,12 @@
 package com.vibol.phoneshop.service.impl;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 
 import com.vibol.phoneshop.entity.Brand;
 import com.vibol.phoneshop.repository.BrandRepository;
@@ -22,6 +27,17 @@ public class BrandServiceImpl implements BrandService{
 		//Brand brand2 = brandRepository.save(brand);	
 		
 		return brandRepository.save(brand);
+	}
+
+	@Override
+	public Brand getById(Integer id) {
+		Optional<Brand> brandOptional = brandRepository.findById(id);
+		if(brandOptional.isPresent()) {
+			return brandOptional.get();
+		}
+		{
+			throw new HttpClientErrorException(HttpStatus.NOT_FOUND, "Brand with id = " + id + " Not Found ");
+		}
 	}
 
 }

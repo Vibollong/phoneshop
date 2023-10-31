@@ -36,9 +36,14 @@ public class BrandController {
 		// so we save Brand 
 		
 		Brand brand = Mapper.toBrand(brandDTO);
-		brand = brandService.create(brand);		
-		
-		return ResponseEntity.ok(Mapper.toBrandDTO(brand));
-		
+		brand = brandService.create(brand);			
+		return ResponseEntity.ok(Mapper.toBrandDTO(brand));		
 	}
+	
+	public  ResponseEntity<?> getOneBrand(){
+		return null;
+	}
+	
+	
+	
 }

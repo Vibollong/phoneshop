@@ -8,4 +8,5 @@ public interface BrandService {
 	// Save Brand to Database 
 	
 	Brand create(Brand brand); 
+	Brand getById(Integer id);
 }
