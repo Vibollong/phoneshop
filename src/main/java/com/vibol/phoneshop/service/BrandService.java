@@ -9,4 +9,9 @@ public interface BrandService {
 	
 	Brand create(Brand brand); 
 	Brand getById(Integer id);
+	
+	// Update 
+	
+	Brand update(Integer id, Brand brandUpdate);
+	
 }
