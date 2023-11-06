@@ -1,5 +1,6 @@
 package com.vibol.phoneshop.service.impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,18 @@ public class BrandServiceImpl implements BrandService{
 		Brand brand = getById(id);
 		brand.setName(brandUpdate.getName());
 		return brandRepository.save(brand);
+	}
+
+	@Override
+	public List<Brand> getBrands() {
+		return brandRepository.findAll();
+		
+	}
+
+	@Override
+	public List<Brand> getBrands(String name) {		
+		//return brandRepository.findByNameLike("%"+name+"%");
+		return brandRepository.findByNameContaining(name);
 	}
 
 }
