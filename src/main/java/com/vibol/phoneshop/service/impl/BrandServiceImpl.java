@@ -1,9 +1,11 @@
 package com.vibol.phoneshop.service.impl;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
@@ -59,16 +61,19 @@ public class BrandServiceImpl implements BrandService{
 		return brandRepository.save(brand);
 	}
 
-	@Override
-	public List<Brand> getBrands() {
-		return brandRepository.findAll();
-		
-	}
 
 	@Override
 	public List<Brand> getBrands(String name) {		
 		//return brandRepository.findByNameLike("%"+name+"%");
 		return brandRepository.findByNameContaining(name);
+	}
+
+	@Override
+	public List<Brand> getBrands(Map<String, String> params) {
+		//brandRepository.findAll(null);
+		//Specification<T>
+		
+		return null;
 	}
 
 }

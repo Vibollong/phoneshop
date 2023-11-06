@@ -1,6 +1,7 @@
 package com.vibol.phoneshop.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.vibol.phoneshop.entity.Brand;
 
@@ -13,9 +14,8 @@ public interface BrandService {
 	Brand update(Integer id, Brand brandUpdate);
 	
 	// List Bran 
-	
-	List<Brand> getBrands();
 	List<Brand> getBrands(String name);
+	List<Brand> getBrands(Map<String, String> params);
 	
 	
 }
