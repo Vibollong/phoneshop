@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vibol.phoneshop.dto.BrandDTO;
+import com.vibol.phoneshop.dto.PageDTO;
 import com.vibol.phoneshop.entity.Brand;
 import com.vibol.phoneshop.service.BrandService;
 import com.vibol.phoneshop.service.mapper.BrandMapper;
@@ -74,14 +76,20 @@ public class BrandController {
 	@GetMapping
 	public ResponseEntity<?> getBrands(@RequestParam Map<String, String> params) {
 		
+		Page<Brand> page = brandService.getBrands(params);
+		PageDTO pageDTO = new PageDTO(page);
+		
+		
 		/*
-		List<BrandDTO> list = brandService.getBrands(name)
+		List<BrandDTO> list = brandService.getBrands(params)
 				.stream().map(brand -> BrandMapper.INSTANCE.toBrandDTO(brand))
-				.collect(Collectors.toList());
-
+				.collect(Collectors.toList());		
 		return ResponseEntity.ok(list);
+		
 		*/
-		return null;
+		
+		return ResponseEntity.ok(pageDTO);
+		
 	}
 	
 
