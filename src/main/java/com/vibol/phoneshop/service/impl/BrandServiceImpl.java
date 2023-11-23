@@ -32,12 +32,15 @@ public class BrandServiceImpl implements BrandService {
 	// អោយ Spring create object ory yerng
 	private BrandRepository brandRepository;
 	// it call dependency injection
+	
+	
 
 	@Override
 	public Brand create(Brand brand) {
 		// Brand brand2 = brandRepository.save(brand);
 
 		return brandRepository.save(brand);
+		
 	}
 
 	@Override
